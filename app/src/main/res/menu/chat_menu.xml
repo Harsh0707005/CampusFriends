@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Individual Chat"
+        android:id="@+id/individual_chat"
+        android:icon="@drawable/individual_chat"/>
+    <item android:title="World Chat"
+        android:id="@+id/world_chat"
+        android:icon="@drawable/world_chat"/>
+
+</menu>

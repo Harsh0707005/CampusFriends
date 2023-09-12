@@ -1,0 +1,31 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.CampusFriends" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary_Light</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant_Light</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary_Light</item>
+        <!--        <item name="colorPrimaryLight">#ff8781</item>-->
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorSecondary_Light</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant_Light</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/colorBackground_Light</item>
+        <item name="colorForFrag">@color/colorSecondaryLight_Light</item>
+
+        <!--        <item name="android:colorBackground">@color/colorBackground_Light</item>-->
+        <item name="android:textColor">@color/colorSecondaryVariant_Light</item>
+        <!--        <item name="android:textColorPrimary">@color/black</item>-->
+        <!--        <item name="android:textColorSecondary">@color/black</item>-->
+
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.CampusFriends" parent="Base.Theme.CampusFriends" />
+</resources>

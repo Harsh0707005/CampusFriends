@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="@color/light_grey">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android"
+            android:shape="rectangle"
+            android:padding="10dp">
+            <solid android:color="@color/white"/>
+            <corners android:radius="20dp"/>
+
+            <stroke
+                android:width="4dp"
+                android:color="@color/green_border"/>
+
+        </shape>
+    </item>
+</ripple>
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<ripple xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    android:color="@color/white">-->
+<!--    <item>-->
+<!--    <shape xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--        android:shape="rectangle"-->
+<!--        android:padding="10dp">-->
+<!--        <solid android:color="@color/light_purple"/>-->
+<!--        <corners android:radius="10dp"/>-->
+<!--&lt;!&ndash;        <stroke&ndash;&gt;-->
+<!--&lt;!&ndash;            android:width="2dp"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:color="@color/light_blue"/>&ndash;&gt;-->
+
+<!--    </shape>-->
+<!--    </item>-->
+<!--</ripple>-->

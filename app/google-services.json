@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "847911640490",
+    "firebase_url": "https://campus-friends-171b9-default-rtdb.firebaseio.com",
+    "project_id": "campus-friends-171b9",
+    "storage_bucket": "campus-friends-171b9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:847911640490:android:041f54cda928eb27149fd3",
+        "android_client_info": {
+          "package_name": "com.example.campusfriends"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "847911640490-k6188qkjl837jnhuiekqclpquqge064b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGTHg9TB3Hdt_89TcIjMsud5jgky-t5CE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "847911640490-k6188qkjl837jnhuiekqclpquqge064b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
