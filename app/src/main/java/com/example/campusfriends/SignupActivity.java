@@ -202,8 +202,6 @@ public class SignupActivity extends AppCompatActivity {
                             Intent intent = new Intent(SignupActivity.this,ChatActivity.class);
                             startActivity(intent);
 
-//                            }
-
                         } else {
                             Toast.makeText(SignupActivity.this, task.getException().getLocalizedMessage()+"", Toast.LENGTH_SHORT).show();
                             Log.d("TAG2", "signInWithCredential:failure", task.getException());

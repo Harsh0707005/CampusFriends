@@ -182,10 +182,14 @@ public class Courses extends AppCompatActivity {
                         imageUrls.clear();
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             course = document.getId();
-                            title = document.getString("name");
-                            description = document.getString("description");
-                            planAccess = document.getString("plan-access");
-                            image = document.getString("image");
+                            try {
+                                title = document.getString("name").trim();
+                                description = document.getString("description").trim();
+                                planAccess = document.getString("plan-access").trim();
+                                image = document.getString("image").trim();
+                            }catch (Exception e){
+                                Log.d("harsh", e.getMessage());
+                            }
 
                             try {
                                 StorageReference storageRef = storage.getReference("Course Images/" + image);

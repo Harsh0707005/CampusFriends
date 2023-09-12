@@ -116,15 +116,6 @@ public class get_details extends AppCompatActivity {
                         , about);
 
                 firebaseDatabase.getReference().child("Users").child(uid).setValue(userModel);
-
-
-//                }else{
-//
-//                    sharedPreferences = getSharedPreferences("SavedToken",MODE_PRIVATE);
-//                    String tokenInMain =  sharedPreferences.getString("ntoken","mynull");
-//                    firebaseDatabase.getReference("Users").child(id).child("token").setValue(tokenInMain);
-//
-//                }
             }
         });
     }

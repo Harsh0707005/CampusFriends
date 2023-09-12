@@ -40,9 +40,6 @@ public class SigninActivity extends AppCompatActivity {
         }
         setContentView(activitySigninBinding.getRoot());
 
-//        sharedPreferences = getSharedPreferences("SavedToken",MODE_PRIVATE);
-
-
         myAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
 

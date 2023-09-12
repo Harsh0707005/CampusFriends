@@ -39,7 +39,6 @@ public class HomeFragment extends Fragment {
     private UniversityAdapter universityAdapter;
 
     public HomeFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -50,7 +49,6 @@ public class HomeFragment extends Fragment {
      * @param param2 Parameter 2.
      * @return A new instance of fragment HomeFragment.
      */
-    // TODO: Rename and change types and number of parameters
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
         Bundle args = new Bundle();
@@ -72,8 +70,6 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         String name = "";
         Bundle args = getArguments();
         if (args != null) {

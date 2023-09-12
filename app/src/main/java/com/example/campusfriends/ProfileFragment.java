@@ -87,10 +87,6 @@ public class ProfileFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         String ss = binding.edittext.getText().toString().trim();
-
-
-
-
                         firebaseDatabase.getReference("Users").child(firebaseAuth.getUid()).child("userName").setValue(ss).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void unused) {
@@ -149,13 +145,8 @@ public class ProfileFragment extends Fragment {
                          .setGuidelines(CropImageView.Guidelines.ON)
                          .setFixAspectRatio(true).setOutputCompressQuality(60)
                         .start(getContext(),ProfileFragment.this);
-
-
             }
         });
-
-
-
 
                 firebaseDatabase.getReference("Users").child(uid).addValueEventListener(new ValueEventListener() {
                     @Override
@@ -181,12 +172,8 @@ public class ProfileFragment extends Fragment {
                     }
                 });
 
-
                 return binding.getRoot();
             }
-
-
-
         @Override
          public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
             super.onActivityResult(requestCode, resultCode, data);

@@ -140,23 +140,19 @@ public class CoursesAdapter extends ArrayAdapter<String> {
     public void showAlertDialog() {
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
         alertDialogBuilder.setTitle("Access Forbidden"); // Set the title of the dialog
-        alertDialogBuilder.setMessage("This is a premium content, you cannot access it as a free member"); // Set the message
+        alertDialogBuilder.setMessage("This is a premium content, you cannot access it as a free member");
 
-        // Set positive button and its action
         alertDialogBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Handle the click action of the OK button (if needed)
-                dialog.dismiss(); // Close the dialog
+                dialog.dismiss();
             }
         });
 
-        // Set negative button and its action (optional)
         alertDialogBuilder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                // Handle the click action of the Cancel button (if needed)
-                dialog.dismiss(); // Close the dialog
+                dialog.dismiss();
             }
         });
         AlertDialog alertDialog = alertDialogBuilder.create();

@@ -67,7 +67,6 @@ public class WorldChatActivity extends Fragment {
         // Get the reference to the "messages" node in Firebase Realtime Database
         chatMessagesRef = FirebaseDatabase.getInstance().getReference().child("WorldChat");
 
-        // Set up ValueEventListener to listen for new chat messages
         chatMessagesRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -77,7 +76,6 @@ public class WorldChatActivity extends Fragment {
                     chatMessageList.add(worldChatMessage);
                 }
                 chatAdapter.notifyDataSetChanged();
-                // Scroll to the bottom of the RecyclerView to see the latest message
                 recyclerViewChat.scrollToPosition(chatMessageList.size() - 1);
             }
 

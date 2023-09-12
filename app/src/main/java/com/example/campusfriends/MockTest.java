@@ -161,32 +161,6 @@ public class MockTest extends AppCompatActivity {
                 Cell cellCorrectOption = row.getCell(5); // for the correct option
 
 
-//                if (cellQuestion != null && cellQuestion.getCellTypeEnum() == CellType.STRING) {
-//                    String question = cellQuestion.getStringCellValue();
-//
-//                    // Collect options for the question
-//                    List<String> options = new ArrayList<>();
-//                    if (cellOption1 != null && cellOption1.getCellTypeEnum() == CellType.STRING) {
-//                        options.add(cellOption1.getStringCellValue());
-//                    }
-//                    if (cellOption2 != null && cellOption2.getCellTypeEnum() == CellType.STRING) {
-//                        options.add(cellOption2.getStringCellValue());
-//                    }
-//                    if (cellOption3 != null && cellOption3.getCellTypeEnum() == CellType.STRING) {
-//                        options.add(cellOption3.getStringCellValue());
-//                    }
-//                    if (cellOption4 != null && cellOption4.getCellTypeEnum() == CellType.STRING) {
-//                        options.add(cellOption4.getStringCellValue());
-//                    }
-//
-//                    // Get the correct option
-//                    String correctOption = "";
-//                    if (cellCorrectOption != null && cellCorrectOption.getCellTypeEnum() == CellType.STRING) {
-//                        correctOption = cellCorrectOption.getStringCellValue();
-//                    }
-//
-//                    allQuestionsData.add(new QuestionData(question, options, correctOption));
-//                }
                 if (cellQuestion != null && cellQuestion.getCellTypeEnum() == CellType.STRING) {
                     String question = cellQuestion.getStringCellValue();
 
@@ -223,14 +197,10 @@ public class MockTest extends AppCompatActivity {
 
                     // Get the correct option
                     String correctOption = "";
-//                    if (cellCorrectOption != null && cellCorrectOption.getCellTypeEnum() == CellType.STRING) {
-//                        correctOption = cellCorrectOption.getStringCellValue();
-//                    }
                     if (cellCorrectOption != null) {
                         if (cellCorrectOption.getCellTypeEnum() == CellType.STRING) {
                             correctOption = cellCorrectOption.getStringCellValue();
                         } else if (cellCorrectOption.getCellTypeEnum() == CellType.NUMERIC) {
-//                            options.add(String.valueOf((int)cellCorrectOption.getNumericCellValue()));
                             correctOption = String.valueOf((int)cellCorrectOption.getNumericCellValue());
                         }
                     }
@@ -242,7 +212,6 @@ public class MockTest extends AppCompatActivity {
             workbook.close();
             fis.close();
 
-            // Shuffle the questions list to get them in random order
             Collections.shuffle(allQuestionsData);
 
             randomQuestionsData = allQuestionsData.subList(0, Math.min(5, allQuestionsData.size()));
@@ -279,7 +248,6 @@ public class MockTest extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        // Delete the temporary Excel file when the user closes the app.
         deleteTempFile();
     }
 

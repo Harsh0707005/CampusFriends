@@ -66,18 +66,17 @@ public class Home extends AppCompatActivity {
                     }
                 }
             });
+        }else {
+            HomeFragment fragment = new HomeFragment();
+            fragment.setArguments(args);
+            replaceFragment(fragment);
         }
-
-        HomeFragment fragment = new HomeFragment();
-        fragment.setArguments(args);
-        replaceFragment(fragment);
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
-//            Log.d("harsh", String.valueOf(itemId));
             if (itemId == R.id.home) {
 //                replaceFragment(new HomeFragment());
-//                HomeFragment fragment = new HomeFragment();
+                HomeFragment fragment = new HomeFragment();
                 fragment.setArguments(args);
                 replaceFragment(fragment);
             } else if (itemId == R.id.mocktests) {

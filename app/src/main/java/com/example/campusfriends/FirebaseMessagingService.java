@@ -96,10 +96,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             mNotificationManager.createNotificationChannel(channel);
             builder.setChannelId(channelId);
         }
-
-
-
-// notificationId is a unique int for each notification that you must define
         mNotificationManager.notify(100, builder.build());
 
 

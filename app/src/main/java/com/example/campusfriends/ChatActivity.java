@@ -84,33 +84,21 @@ public class ChatActivity extends Fragment {
             }
         });
 
-        // Rest of your code for populating the chat list...
         chatPageAdapter = new chatPageAdapter(userData, requireContext());
         executorService.execute(new Runnable() {
             @Override
             public void run() {
-
-
-
                 firebaseDatabase.getReference("Users").addValueEventListener(new ValueEventListener() {
-
-
-
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-
-
                         userData.clear();
                         ArrayList<String> contactIds = new ArrayList<>();
                         ArrayList<Long> recentMsgTimes = new ArrayList<>();
                         ArrayList<String> recentMsg = new ArrayList<>();
 
-
                         if(snapshot.child(userId).hasChild("Contacts"))
                             for (DataSnapshot e : snapshot.child(myAuth.getUid()).child("Contacts").getChildren()){
                                 contactIds.add(e.getKey());
-
 
                                 if(e.hasChild("interactionTime")) {
                                     recentMsgTimes.add((long)e.child("interactionTime").getValue());
@@ -129,7 +117,6 @@ public class ChatActivity extends Fragment {
 
                         }
 
-
                         for(int i=0;i<contactIds.size();i++) {
 
                             String e = contactIds.get(i);
@@ -143,13 +130,9 @@ public class ChatActivity extends Fragment {
 
                             }
 
-
-
-
                             String uName = snapshot.child(e).child("userName").getValue().toString();
                             String uMail = snapshot.child(e).child("userMail").getValue().toString();
                             String uPic = snapshot.child(e).child("profilePic").getValue().toString();
-//                            String token = snapshot.child(e).child("token").getValue().toString();
 
                             UserModel model = new UserModel(uName, uMail, uPic);
                             model.setUserId(e);
@@ -159,19 +142,15 @@ public class ChatActivity extends Fragment {
                             userData.add(model);
                             chatPageAdapter.notifyDataSetChanged();
                         }
-
                     }
-
                     @Override
                     public void onCancelled(@NonNull DatabaseError error) {
-
                     }
                 });
 
             }
         });
 
-//        Drawable drawable =  ContextCompat.getDrawable(MainActivity.this,R.drawable.divider);
         DividerItemDecoration decoration = new DividerItemDecoration(activityChatBinding.chatsRecyclerview.getContext(), DividerItemDecoration.VERTICAL);
         activityChatBinding.chatsRecyclerview.addItemDecoration(decoration);
         activityChatBinding.chatsRecyclerview.setLayoutManager(new LinearLayoutManager(requireContext()));

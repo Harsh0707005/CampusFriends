@@ -59,7 +59,6 @@ public class mock_tests_list extends AppCompatActivity {
                             mock_names.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                                 @Override
                                 public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-//                                    Toast.makeText(mock_tests_list.this, mock_names.getItemAtPosition(position).toString(), Toast.LENGTH_SHORT).show();
                                     Intent i = new Intent(mock_tests_list.this, MockTest.class);
                                     i.putExtra("name", mock_names.getItemAtPosition(position).toString());
                                     startActivity(i);
