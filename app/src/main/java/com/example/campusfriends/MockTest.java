@@ -68,7 +68,7 @@ public class MockTest extends AppCompatActivity {
 
         Intent i = getIntent();
         String mock_name = i.getStringExtra("name");
-        fetchFileWithSpecificName(mock_name+".xlsx");
+        fetchFileWithSpecificName("Mock/"+mock_name+".xlsx");
 
         options.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
