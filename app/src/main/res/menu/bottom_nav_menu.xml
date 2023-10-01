@@ -4,7 +4,7 @@
     <item android:title="Home"
         android:id="@+id/home"
         android:icon="@drawable/home"/>
-    <item android:title="Mock Tests"
+    <item android:title="Campus Interview Test"
         android:id="@+id/mocktests"
         android:icon="@drawable/mocktests"/>
     <item android:title="Chat"

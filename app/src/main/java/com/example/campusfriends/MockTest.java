@@ -36,7 +36,7 @@ public class MockTest extends AppCompatActivity {
     RadioGroup options;
     RadioButton option_a, option_b, option_c, option_d, chosen_button;
     ProgressBar progressBar4;
-    Button next_question, previous_question;
+    Button next_question, previous_question, button4;
     List<String> allQuestions;
     List<QuestionData> randomQuestionsData;
     QuestionData questionData;
@@ -58,6 +58,7 @@ public class MockTest extends AppCompatActivity {
         progressBar4 = findViewById(R.id.progressBar4);
         next_question = findViewById(R.id.next_question);
         previous_question = findViewById(R.id.previous_question);
+        button4 = findViewById(R.id.button4);
         progressBar4.setVisibility(View.VISIBLE);
 
         chosen_option = "";
@@ -98,6 +99,7 @@ public class MockTest extends AppCompatActivity {
                         progressBar4.setVisibility(View.INVISIBLE);
                         question.setVisibility(View.VISIBLE);
                         question.setText("You got " + score + " correct out of 5 questions!!!");
+                        button4.setVisibility(View.VISIBLE);
                     } else {
                         current_question_number += 1;
                         showQuestion(current_question_number);
@@ -113,6 +115,14 @@ public class MockTest extends AppCompatActivity {
                     Toast.makeText(MockTest.this, "Please choose an option", Toast.LENGTH_SHORT).show();
                 }
 
+            }
+        });
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MockTest.this, mock_tests_list.class);
+                startActivity(i);
+                finish();
             }
         });
     }

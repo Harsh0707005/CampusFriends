@@ -29,7 +29,9 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Courses extends AppCompatActivity {
 
@@ -42,8 +44,10 @@ public class Courses extends AppCompatActivity {
     ProgressBar progressBar3;
     List<String> titleList;
     List<String> descList;
+    List<String> image_names;
     List<String> courses;
-    List<String> imageUrls;
+//    List<String> imageUrls;
+    Map<String, String> imageUrls;
     String plan;
     String title;
     String description;
@@ -68,8 +72,10 @@ public class Courses extends AppCompatActivity {
         titleList = new ArrayList<>();
         descList = new ArrayList<>();
         planAccessList = new ArrayList<>();
+        imageUrls = new HashMap<>();
+        image_names = new ArrayList<>();
         courses = new ArrayList<>();
-        imageUrls = new ArrayList<>();
+//        imageUrls = new ArrayList<>();
 
         storage = FirebaseStorage.getInstance();
         storageRef = storage.getReference();
@@ -126,7 +132,7 @@ public class Courses extends AppCompatActivity {
                                     isFirstButton = false;
                                     selectedButton = newButton;
                                     progressBar3.setVisibility(View.VISIBLE);
-                                    addToCourseList(university, group, semester, titleList, descList);
+                                    addToCourseList(university, group, semester);
 
                                 }else {
                                     newButton.setBackgroundResource(R.drawable.rounded_button_courses);
@@ -156,7 +162,7 @@ public class Courses extends AppCompatActivity {
                                         selectedButton.setBackgroundResource(R.drawable.rounded_button_selected_course);
                                         String buttonText = clickedButton.getText().toString();
                                         progressBar3.setVisibility(View.VISIBLE);
-                                        addToCourseList(university, group, semester, titleList, descList);
+                                        addToCourseList(university, group, semester);
 
                                     }
                                 });
@@ -169,7 +175,7 @@ public class Courses extends AppCompatActivity {
                     }
                 });
     }
-    public void addToCourseList (String university,String group, String semester, List<String> titleList, List<String> descList){
+    public void addToCourseList (String university,String group, String semester){
         db.collection("Universities").document(university).collection("Groups").document(group).collection("Semesters").document(semester).collection("Courses")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -180,6 +186,7 @@ public class Courses extends AppCompatActivity {
                         courses.clear();
                         planAccessList.clear();
                         imageUrls.clear();
+                        image_names.clear();
                         for (QueryDocumentSnapshot document : task.getResult()) {
                             course = document.getId();
                             try {
@@ -187,34 +194,65 @@ public class Courses extends AppCompatActivity {
                                 description = document.getString("description").trim();
                                 planAccess = document.getString("plan-access").trim();
                                 image = document.getString("image").trim();
+                                Log.d("harsh", image);
+
+//                                StorageReference storageRef = storage.getReference("Course Images/" + image);
+//                                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//                                        String imageUrl = uri.toString();
+//                                        Log.d("harsh", imageUrl);
+//                                        imageUrls.put(course, imageUrl);
+//                                        Log.d("harsh", imageUrls.toString());
+//                                    }
+//                                });
                             }catch (Exception e){
                                 Log.d("harsh", e.getMessage());
                             }
 
-                            try {
-                                StorageReference storageRef = storage.getReference("Course Images/" + image);
-                                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                    @Override
-                                    public void onSuccess(Uri uri) {
-                                        String imageUrl = uri.toString();
-                                        Log.d("harsh", imageUrl);
-                                        imageUrls.add(imageUrl);
-                                    }
-                                });
-                            }catch (Exception e){
-                                Log.d("harsh", e.getMessage());
-                            }
+//                            try {
+//                                StorageReference storageRef = storage.getReference("Course Images/" + image);
+//                                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//                                    @Override
+//                                    public void onSuccess(Uri uri) {
+//                                        String imageUrl = uri.toString();
+//                                        Log.d("harsh", imageUrl);
+//                                        imageUrls.put(image, imageUrl);
+//                                        Log.d("harsh", imageUrls.toString());
+//                                    }
+//                                });
+//                            }catch (Exception e){/
+//                                Log.d("harsh", e.getMessage());
+//                            }
 
                             courses.add(course);
                             titleList.add(title);
                             descList.add(description);
                             planAccessList.add(planAccess);
+                            image_names.add(image);
+                        }
+                        for (int j = 0; j<image_names.size(); j++){
+                            try {
+                                String imageName = image_names.get(j);
+                                StorageReference storageRef = storage.getReference("Course Images/" + imageName);
+                                storageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                    @Override
+                                    public void onSuccess(Uri uri) {
+                                        String imageUrl = uri.toString();
+//                                        Log.d("harsh", imageUrl);
+                                        imageUrls.put(imageName, imageUrl);
+//                                        Log.d("harsh", imageUrls.toString());
+                                    }
+                                });
+                            }catch (Exception e){
+                                Log.d("harsh", e.getMessage());
+                            }
                         }
                         if(title != null) {
                             gridView.setVisibility(View.VISIBLE);
                             textView7.setVisibility(View.GONE);
                             progressBar3.setVisibility(View.GONE);
-                            CoursesAdapter myadapter = new CoursesAdapter(Courses.this, R.layout.courses_card_items, titleList, descList, plan, planAccessList, university, group, semester, courses, imageUrls);
+                            CoursesAdapter myadapter = new CoursesAdapter(Courses.this, R.layout.courses_card_items, titleList, descList, plan, planAccessList, university, group, semester, courses, imageUrls, image_names);
                             gridView.setAdapter(myadapter);
                         }else {
                             gridView.setVisibility(View.GONE);

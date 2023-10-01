@@ -26,6 +26,7 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
 import java.util.List;
+import java.util.Map;
 
 public class CoursesAdapter extends ArrayAdapter<String> {
 
@@ -40,9 +41,11 @@ public class CoursesAdapter extends ArrayAdapter<String> {
     private final String semester;
     private final String university;
     private final List<String> courses;
-    private final List<String> imageUrls;
+    private final Map<String, String> imageUrls;
+    private final List<String> image_names;
+//    private final List<String> imageUrls;
 
-    public CoursesAdapter(@NonNull Context mContext, int resource, @NonNull List<String> titleList, List<String> descList, String plan, List<String> planAccessList, String university, String group, String semester, List<String> courses, List<String> imageUrls) {
+    public CoursesAdapter(@NonNull Context mContext, int resource, @NonNull List<String> titleList, List<String> descList, String plan, List<String> planAccessList, String university, String group, String semester, List<String> courses, Map<String, String> imageUrls, List<String> image_names) {
         super(mContext, resource, titleList);
         this.mContext = mContext;
         this.resource = resource;
@@ -55,6 +58,7 @@ public class CoursesAdapter extends ArrayAdapter<String> {
         this.semester = semester;
         this.courses = courses;
         this.imageUrls = imageUrls;
+        this.image_names = image_names;
     }
 
     @Nullable
@@ -71,9 +75,15 @@ public class CoursesAdapter extends ArrayAdapter<String> {
     }
     public String getcourse(int position){
         return courses.get(position);
-    }public String getimageurl(int position){
-        return imageUrls.get(position);
     }
+    public String getimageName(int position){
+        return image_names.get(position);
+    }
+    public String getimageurl(int position) {
+        String image = getimageName(position);
+        return imageUrls.get(image);
+    }
+
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
@@ -94,11 +104,12 @@ public class CoursesAdapter extends ArrayAdapter<String> {
         try {
             Glide.with(mContext)
                     .load(getimageurl(position))
-                    .skipMemoryCache(true)
+//                    .skipMemoryCache(true)
                     .listener(new RequestListener<Drawable>() {
                         @Override
                         public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                            Toast.makeText(mContext, "", Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(mContext, "Image Failed to Load", Toast.LENGTH_SHORT).show();
+//                            Log.d("harsh", e.getMessage());
                             return false;
                         }
 

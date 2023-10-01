@@ -3,6 +3,7 @@ package com.example.campusfriends;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -10,6 +11,7 @@ import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,6 +27,7 @@ public class mock_tests_list extends AppCompatActivity {
     FirebaseFirestore db;
     List<String> pdf_names;
     List<String> mocks;
+    Toolbar toolbar2;
 
     ListView mock_names;
     @Override
@@ -32,7 +35,13 @@ public class mock_tests_list extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mock_tests_list);
 
+        toolbar2 = findViewById(R.id.toolbar2);
+
         mock_names = findViewById(R.id.mock_names);
+
+        setSupportActionBar(toolbar2);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Campus Interview Test");
 
         pdf_names = new ArrayList<>();
         mocks = new ArrayList<>();
@@ -71,5 +80,12 @@ public class mock_tests_list extends AppCompatActivity {
         }catch (Exception e){
             Log.d("harsh", e.getMessage());
         }
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
