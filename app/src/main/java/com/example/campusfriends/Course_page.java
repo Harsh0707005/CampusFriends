@@ -1,6 +1,7 @@
 package com.example.campusfriends;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -26,6 +27,7 @@ import android.widget.VideoView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -138,8 +140,8 @@ public class Course_page extends AppCompatActivity {
                 textView8.setVisibility(View.VISIBLE);
                 textView9.setVisibility(View.VISIBLE);
                 linearLayout.setVisibility(View.VISIBLE);
-                videoView.start();
                 listView.setVisibility(View.GONE);
+                videoView.start();
 
             }
         });
@@ -149,11 +151,12 @@ public class Course_page extends AppCompatActivity {
                 selected_button.setBackgroundResource(R.drawable.rounded_button_courses);
                 selected_button = button3;
                 selected_button.setBackgroundResource(R.drawable.rounded_button_selected_course);
-                textView8.setVisibility(View.GONE);
-                textView9.setVisibility(View.GONE);
                 videoView.pause();
                 linearLayout.setVisibility(View.GONE);
+                textView8.setVisibility(View.GONE);
+                textView9.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
+
                 getPdfdoc(university, group, semester, course);
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -295,9 +298,9 @@ public class Course_page extends AppCompatActivity {
 
         toolbar1.setVisibility(View.GONE);
         horizontalScroll1.setVisibility(View.GONE);
-        textView8.setVisibility(View.GONE);
-        textView9.setVisibility(View.GONE);
-        listView.setVisibility(View.GONE);
+//        textView8.setVisibility(View.GONE);
+//        textView9.setVisibility(View.GONE);
+//        listView.setVisibility(View.GONE);
 
         // Hide the status bar and make navigation bar semi-transparent
         View decorView = getWindow().getDecorView();
@@ -313,9 +316,9 @@ public class Course_page extends AppCompatActivity {
 
         toolbar1.setVisibility(View.VISIBLE);
         horizontalScroll1.setVisibility(View.VISIBLE);
-        textView8.setVisibility(View.VISIBLE);
-        textView9.setVisibility(View.VISIBLE);
-        listView.setVisibility(View.VISIBLE);
+//        textView8.setVisibility(View.VISIBLE);
+//        textView9.setVisibility(View.VISIBLE);
+//        listView.setVisibility(View.VISIBLE);
 
         // Restore the original layout parameters
         ViewGroup.LayoutParams params = videoView.getLayoutParams();
