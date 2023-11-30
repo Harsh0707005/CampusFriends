@@ -45,7 +45,7 @@ Used for managing authentication details of each user (with unique uid of each u
 
 ### Firebase Database
 <pre>
--Users <b>(automatically managed by app)</b>
+-Users <b>(Users collection is automatically managed by app)</b>
     -uid1
         -user data
     -uid2
